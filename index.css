@@ -1,0 +1,112 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.grid{
+    height: 100%;
+    display: grid;
+  grid-template-columns:repeat(2,1fr);
+  grid-template-areas:
+    "budCalc budCalc"
+    "itemsFor itemsFor"
+    "inc exp";
+   grid-gap: 5px;
+   grid-row-gap: 0px;
+    grid-template-rows: 6fr  2fr 20fr;
+}
+.grid>div{
+    display: block;
+}
+.budgetCalc{
+    grid-area: budCalc;
+    
+    height: 100%;
+    background-image: url("https://forums.unrealengine.com/filedata/fetch?id=1113441&d=1470732920");
+    background-position: 40%;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.budgetDiv{
+    height: fit-content;
+    width: 200px;
+    left: 600px;
+    display: block;
+    margin-left: 40%;
+    background-color: rgb(155, 152, 152,0.4);
+    box-shadow: 5px 5px 10px #333;
+    border-radius: 4%;
+    padding: 10px;
+}
+.incDiv{
+    background-color: aqua;
+    border-radius: 2%;
+    padding: 6px;
+}
+#totalExpenseValue, #totalIncomeValue{
+    align-content: right;
+    right: -40px;
+}
+.expDiv{
+    background-color: orangered;
+    margin-top: 10px;
+    padding: 6px;
+}
+.budgetDiv div p{
+    position: relative;
+    display: inline;
+}
+.budgetDiv h3,h2{
+    text-align: center;
+}
+.itemsForm{
+    grid-area: itemsFor;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10%;
+    background-color: burlywood;
+}
+.itemsF{
+    display: flex;
+    align-items: center;
+    background-color: inherit;
+    justify-content: center;
+    padding: 20px;
+}
+.itemsF >*{
+    padding-right: 30px;
+    margin-right: 30px;
+}
+/* .incExp{
+    display: grid;
+    
+    flex-wrap: wrap;
+    grid-template-columns:1fr 1fr;
+    grid-template-areas:
+        "inc exp"
+        "inc exp"
+        "inc exp";
+    /* grid-gap: 10px; */
+    /* grid-template-rows: 100px; */
+    /* grid-auto-rows: 100px; */
+        /* background-color: blue; */
+/* }
+ */ 
+
+.inc{
+    grid-area: inc;
+    width: calc(50vw-10px);
+    background-color: beige;
+}
+.inc h1{
+    color: lightgreen;
+}
+.exp h1{
+    color: red;
+}
+.exp{
+    grid-area: exp;
+    width: calc(50vw-10px);
+    /* margin-left: 50%; */
+    background-color: beige;
+}

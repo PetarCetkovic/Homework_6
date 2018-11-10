@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
+</head>
+<body>
+    <div class="grid">
+        <div class="budgetCalc">
+            <div class="budgetDiv">
+                <div>               
+                     <h3>Available Budget</h3>
+                </div>
+                <div>
+                    <h2 id="avaBudg">0</h2>
+                </div>
+                <div class="incDiv">
+                    <p>INCOME: </p>
+                    <p id="totalIncomeValue">0</p>
+                </div>
+                <div class="expDiv">
+                    <p>EXPENSES:</p>
+                    <p id="totalExpenseValue">0</p>
+                </div>
+            </div>
+        </div>
+        <div class="itemsForm">
+            <form id="addForm" class="itemsF">
+                <select name="incomes" id="plusOrMinus">
+                    <option value="+">+</option>
+                    <option value="-">-</option>
+                </select>
+                <input type="text" placeholder="Add description" id="item">
+                <input type="text" placeholder="Value" id="val">
+                <button id="sub">ADD</button>
+            </form>
+        </div>
+
+            <div class="inc">
+                <h1>INCOME</h1>
+                <table id="incT">
+                    
+                </table>
+            </div>
+            <div class="exp">
+                    <h1>EXPENSES</h1>
+                    <table id="expT">
+    
+                    </table>
+            </div>
+        
+    </div>
+    <script src="main.js"></script>
+
+</body>
+</html>
