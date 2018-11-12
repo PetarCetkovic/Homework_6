@@ -110,3 +110,8 @@ body{
     /* margin-left: 50%; */
     background-color: beige;
 }
+
+table tr{
+    border-bottom: 3pt solid red;
+    background-color: green;
+}
