@@ -12,7 +12,7 @@ body{
     "inc exp";
    grid-gap: 5px;
    grid-row-gap: 0px;
-    grid-template-rows: 6fr  2fr 20fr;
+    grid-template-rows: 6fr  2fr 15fr;
 }
 .grid>div{
     display: block;
@@ -77,22 +77,6 @@ body{
     padding-right: 30px;
     margin-right: 30px;
 }
-/* .incExp{
-    display: grid;
-    
-    flex-wrap: wrap;
-    grid-template-columns:1fr 1fr;
-    grid-template-areas:
-        "inc exp"
-        "inc exp"
-        "inc exp";
-    /* grid-gap: 10px; */
-    /* grid-template-rows: 100px; */
-    /* grid-auto-rows: 100px; */
-        /* background-color: blue; */
-/* }
- */ 
-
 .inc{
     grid-area: inc;
     width: calc(50vw-10px);
@@ -107,11 +91,17 @@ body{
 .exp{
     grid-area: exp;
     width: calc(50vw-10px);
-    /* margin-left: 50%; */
     background-color: beige;
 }
 
-table tr{
-    border-bottom: 3pt solid red;
-    background-color: green;
+table {
+    border-collapse: collapse;
+    width: 100%;
 }
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: rgb(228, 114, 69)}

@@ -1,4 +1,4 @@
-function addElem(table,descr, val){
+function addElem(table,descr, val, sign){
     let row     = document.createElement("tr");
     let des     = document.createElement("td");
     let value   = document.createElement("td");
@@ -16,7 +16,7 @@ function addElem(table,descr, val){
     }  
 
     des.appendChild(document.createTextNode(descr));
-    value.appendChild(document.createTextNode(val));
+    value.appendChild(document.createTextNode(sign+val));
     d.appendChild(document.createTextNode("X"));
     del.appendChild(d);
     row.appendChild(des);
@@ -49,7 +49,7 @@ function getSum(list){
     return sum.toFixed(2);
 }
 function calcBudget(){
-    return totalIncome() - totalExpense();
+    return totalIncome() - Math.abs(totalExpense());
 }
 
 function totalIncome(){
@@ -93,10 +93,10 @@ function addItem(event){
     let expTable    = document.getElementById("expT");
     let plOrMin = document.getElementById("plusOrMinus").value;
     if(plOrMin==="+"){
-        addElem(incTable,description, valueOfElem);
+        addElem(incTable,description, valueOfElem, "+");
     }
     else{
-        addElem(expTable,description, valueOfElem);
+        addElem(expTable,description, valueOfElem, "-");
     }
     fillBudgetCalc();
     up();
