@@ -79,7 +79,7 @@ body{
 }
 .inc{
     grid-area: inc;
-    width: calc(50vw-10px);
+    width: 100%;
     background-color: beige;
 }
 .inc h1{
@@ -90,7 +90,7 @@ body{
 }
 .exp{
     grid-area: exp;
-    width: calc(50vw-10px);
+    width: 100%;
     background-color: beige;
 }
 
@@ -105,3 +105,31 @@ th, td {
 }
 
 tr:nth-child(even){background-color: rgb(228, 114, 69)}
+
+@media screen and (max-width: 600px) {
+    
+    .itemsF >*{
+        padding-right: 0;
+        margin-right: 0;
+        display: inline;
+    }
+    .budgetDiv{
+        height: fit-content;
+        width: 200px;
+        left: 200px;
+        display: block;
+        margin-left: 24%;
+        background-color: rgb(155, 152, 152,0.4);
+        box-shadow: 5px 5px 10px #333;
+        border-radius: 4%;
+        padding: 3px;
+    }
+}
+@media screen and (max-width:400px){
+    .itemsF >*{
+        padding-right: 0;
+        margin-right: 0;
+        display: inline-block;
+        width: 60%;
+    }
+}

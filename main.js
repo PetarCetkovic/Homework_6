@@ -1,3 +1,5 @@
+(function (){
+
 function addElem(table,descr, val, sign){
     let row     = document.createElement("tr");
     let des     = document.createElement("td");
@@ -127,22 +129,25 @@ button.addEventListener("click", addItem);
 
 const del    = document.getElementsByClassName("inc");
 const del2   = document.getElementsByClassName("exp");
-del[0].addEventListener("click",  removeItem);
+del[0].addEventListener("click",  function(e){
+    console.log("cao");
+    removeItem(e);
+});
 del2[0].addEventListener("click", removeItem);
 
 function saveAll(){
     let all = document.getElementById("allGrid").innerHTML;
-    var list={
+    let list={
         budget:all
     }
-    var listee=[];
+    let listee=[];
     listee.push(list);
     localStorage.setItem('listee', JSON.stringify(listee));
 }
 
 function startLocale(){
-    var listeee = JSON.parse(localStorage.getItem('listee'))
+    let listeee = JSON.parse(localStorage.getItem('listee'))
     document.getElementById("allGrid").innerHTML = listeee[0].budget;
-    
 }
 // window.addEventListener("load",startLocale);
+}());
