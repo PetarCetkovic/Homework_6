@@ -1,12 +1,24 @@
 (function (){
 
+function $create(elem){
+    return document.createElement(elem);
+}
+
+function $id(elem){
+    return document.getElementById(elem);
+}
+
+function $class(elem){
+    return document.getElementsByClassName(elem);
+}
+
 function addElem(table,descr, val, sign){
-    let row     = document.createElement("tr");
-    let des     = document.createElement("td");
-    let value   = document.createElement("td");
-    let del     = document.createElement("td");
-    let procent = document.createElement("td");
-    let d       = document.createElement("button");
+    let row     = $create("tr");
+    let des     = $create("td");
+    let value   = $create("td");
+    let del     = $create("td");
+    let procent = $create("td");
+    let d       = $create("button");
     if(table.id==="incT"){
         value.className = "incomeList table";
         d.className     = "deleteInc";
@@ -30,7 +42,7 @@ function addElem(table,descr, val, sign){
 const monthArray = ["January", "February", "March", "April", "May", "June", "July",
                     "August", "September", "October", "November", "December"];
 const d = new Date();
-document.getElementById("month").innerText = monthArray[d.getMonth()];
+$id("month").innerText = monthArray[d.getMonth()];
 
 function updatePrecent(list, procent){
     for(let i = 0; i<list.length;i++){
@@ -39,9 +51,7 @@ function updatePrecent(list, procent){
     }
 }
 function up(){
-    let expList = document.getElementsByClassName("expenseList");
-    let procentsExp = document.getElementsByClassName("percentExp");
-    updatePrecent(expList, procentsExp);
+    updatePrecent($class("expenseList"), $class("percentExp"));
 }
 function getSum(list){
     let sum =0;
@@ -55,22 +65,17 @@ function calcBudget(){
 }
 
 function totalIncome(){
-    let incList = document.getElementsByClassName("incomeList");
-    return getSum(incList);
+    return getSum($class("incomeList"));
 }
 
 function totalExpense(){
-    let expList = document.getElementsByClassName("expenseList");
-    return getSum(expList);
+    return getSum($class("expenseList"));
 }
 
 function fillBudgetCalc(){
-    let availableBudg = document.getElementById("avaBudg");
-    let totalIncomeV  = document.getElementById("totalIncomeValue");
-    let totalExpenseV = document.getElementById("totalExpenseValue");
-    availableBudg.innerText = calcBudget().toFixed(2);
-    totalIncomeV.innerText  = totalIncome();
-    totalExpenseV.innerText = totalExpense();
+    $id("avaBudg").innerText = calcBudget().toFixed(2);
+    $id("totalIncomeValue").innerText  = totalIncome();
+    $id("totalExpenseValue").innerText = totalExpense();
 }
 
 function notNumber(num){
@@ -85,20 +90,16 @@ function notNumber(num){
 
 function addItem(event){
     event.preventDefault();
-    let description = document.getElementById("item").value;
-    let valueOfElem = document.getElementById("val").value;
-    if(valueOfElem==="" || notNumber(valueOfElem)){
+    if($id("val").value==="" || notNumber($id("val").value)){
         alert("Please insert number in value field"); 
         return 0;
     }
-    let incTable    = document.getElementById("incT");
-    let expTable    = document.getElementById("expT");
-    let plOrMin = document.getElementById("plusOrMinus").value;
-    if(plOrMin==="+"){
-        addElem(incTable,description, valueOfElem, "+");
+
+    if($id("plusOrMinus").value==="+"){
+        addElem($id("incT"),$id("item").value, $id("val").value, "+");
     }
     else{
-        addElem(expTable,description, valueOfElem, "-");
+        addElem($id("expT"),$id("item").value, $id("val").value, "-");
     }
     fillBudgetCalc();
     up();
@@ -106,39 +107,33 @@ function addItem(event){
 }
 
 function removeItem(event){
-    let table = document.getElementById("expT");
     if(event.target.classList.contains("deleteInc")){
-        table = document.getElementById("incT");
         if(confirm("Jeste li sigurni da zelite da uklonite item?")){
            const tr = event.target.parentNode.parentNode;
-            table.removeChild(tr);
+           $id("incT").removeChild(tr);
         }
     }
     else if(event.target.classList.contains("deleteExp")){
         if(confirm("Jeste li sigurni da zelite da uklonite item?")){
             const tr = event.target.parentNode.parentNode;
-            table.removeChild(tr);
+            $id("expT").removeChild(tr);
          }
     }
     fillBudgetCalc();
     up();
     saveAll();
 }
-const  button = document.getElementById("sub");
-button.addEventListener("click", addItem);
 
-const del    = document.getElementsByClassName("inc");
-const del2   = document.getElementsByClassName("exp");
-del[0].addEventListener("click",  function(e){
-    console.log("cao");
+$id("sub").addEventListener("click", addItem);
+
+$class("inc")[0].addEventListener("click",  function(e){
     removeItem(e);
 });
-del2[0].addEventListener("click", removeItem);
+$class("exp")[0].addEventListener("click", removeItem);
 
 function saveAll(){
-    let all = document.getElementById("allGrid").innerHTML;
     let list={
-        budget:all
+        budget:$id("allGrid").innerHTML
     }
     let listee=[];
     listee.push(list);
@@ -147,7 +142,7 @@ function saveAll(){
 
 function startLocale(){
     let listeee = JSON.parse(localStorage.getItem('listee'))
-    document.getElementById("allGrid").innerHTML = listeee[0].budget;
+    $id("allGrid").innerHTML = listeee[0].budget;
 }
 // window.addEventListener("load",startLocale);
 }());
