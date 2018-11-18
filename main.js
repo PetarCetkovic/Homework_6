@@ -76,6 +76,7 @@ function fillBudgetCalc(){
     $id("avaBudg").innerText = calcBudget().toFixed(2);
     $id("totalIncomeValue").innerText  = totalIncome();
     $id("totalExpenseValue").innerText = totalExpense();
+    saveAll();
 }
 
 function notNumber(num){
@@ -132,17 +133,22 @@ $class("inc")[0].addEventListener("click",  function(e){
 $class("exp")[0].addEventListener("click", removeItem);
 
 function saveAll(){
-    let list={
-        budget:$id("allGrid").innerHTML
-    }
-    let listee=[];
-    listee.push(list);
-    localStorage.setItem('listee', JSON.stringify(listee));
+
+    window.localStorage.inc = $id("incDiv").innerHTML;
+    window.localStorage.exp = $id("expDiv").innerHTML;
+    window.localStorage.bud = $id("budgDiv").innerHTML;
 }
 
 function startLocale(){
-    let listeee = JSON.parse(localStorage.getItem('listee'))
-    $id("allGrid").innerHTML = listeee[0].budget;
+    
+    let storedInc = window.localStorage.inc;
+    let storedExp = window.localStorage.exp;
+    let storedBud = window.localStorage.bud;
+    if(storedExp || storedInc){
+        $id("incDiv").innerHTML = storedInc;
+        $id("expDiv").innerHTML = storedExp;
+        $id("budgDiv").innerHTML = storedBud;
+    }
 }
-// window.addEventListener("load",startLocale);
+startLocale();
 }());
